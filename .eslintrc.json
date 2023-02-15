@@ -15,8 +15,18 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react", "react-hooks", "@typescript-eslint", "prettier"
     ],
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
     "rules": {
+        "react/react-in-jsx-scope": "off",
+        "camelcase": "error",
+        "spaced-comment": "error",
+        "quotes": ["error", "single"],
+        "no-duplicate-imports": "error"
     }
 }

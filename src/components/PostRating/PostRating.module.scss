@@ -1,0 +1,22 @@
+.post{
+  &__rating{
+    margin: 0 auto 10px;
+  }
+  &__list{
+    margin: 0 auto;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+  }
+  &_yellow{
+    fill: orange;
+  }
+  &_black{
+    fill: black;
+  }
+  &__title {
+    color: black;
+  }
+}

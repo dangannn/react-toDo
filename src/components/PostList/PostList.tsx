@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import Post from "../Post/Post";
-import { IPost } from "../../types/types";
+import React, { useState } from 'react'
+import Post from '../Post/Post'
+import { IPost } from '../../types/types'
+import styles from './PostList.module.scss'
 
 interface PostList {
-  posts: IPost[];
-  remove: any;
+  posts: IPost[]
+  remove: any
 }
 
 const PostList = ({ posts, remove }: PostList) => {
   return (
-    <div>
-      <h2>Post List</h2>
+    <div className={styles.postlist__wrapper}>
       {posts.map((post) => {
-        return <Post key={post.id} post={post} remove={remove} />;
+        return <Post key={post.id} post={post} remove={remove} />
       })}
     </div>
-  );
-};
+  )
+}
 
-export default PostList;
+export default PostList

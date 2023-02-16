@@ -1,7 +1,37 @@
 .post {
-  color: black;
-  border: 1px solid black;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
+  max-width: 500px;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  font-family: "JetBrains Mono",monospace;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+  word-wrap: normal;
+  &__title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  &__content{
+    margin-bottom: 100px;
+  }
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

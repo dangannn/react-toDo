@@ -8,7 +8,8 @@ import PostRating from '../PostRating/PostRating'
 
 interface PostProps {
   post: IPost
-  remove: any
+  remove: (post: IPost) => void
+  changePostRating: (rating: number, post: IPost) => void
 }
 
 const Post = (props: PostProps) => {
@@ -24,9 +25,10 @@ const Post = (props: PostProps) => {
       <div className={styles.post}>
         <p className={styles.post__title}>{props.post.title}</p>
         <PostRating
-          rating={rating}
+          post={props.post}
           setRating={setRating}
           starRating={props.post.rating}
+          changePostRating={props.changePostRating}
         ></PostRating>
         <p className={styles.post__content}>{props.post.value}</p>
         <div className={styles.post__btns}>

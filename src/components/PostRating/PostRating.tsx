@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import styles from './PostRating.module.scss'
 import MyButton from '../../UI/MyButton/MyButton'
+import { IPost } from '../../types/types'
 
 interface PostStar {
   highlighted: boolean
 }
 
 interface PostRating {
-  rating: number
+  post: IPost
   setRating: (arg0: number) => void
   starRating: number
+  changePostRating: (rating: number, post: IPost) => void
 }
 
 function Star({ highlighted }: PostStar) {
@@ -19,10 +21,10 @@ function Star({ highlighted }: PostStar) {
     </svg>
   )
 }
-function PostRating({ rating, setRating, starRating }: PostRating) {
+function PostRating({ post, setRating, starRating, changePostRating }: PostRating) {
   const [hoverIndex, setHoverIndex] = useState(starRating)
   function highligthedStar(index: number) {
-    return index <= hoverIndex || index <= rating
+    return index <= hoverIndex || index <= post.rating
   }
 
   return (
@@ -33,9 +35,10 @@ function PostRating({ rating, setRating, starRating }: PostRating) {
             <li
               className={styles.post__item}
               onMouseEnter={() => setHoverIndex(index)}
-              onMouseLeave={() => setHoverIndex(0)}
+              onMouseLeave={() => setHoverIndex(post.rating)}
               onMouseDown={() => {
                 starRating = 0
+                changePostRating(index, post)
                 setRating(index)
               }}
               onClick={(e) => e.stopPropagation()}

@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import './Reset.scss'
 import './App.scss'
-import StarRating from './components/StarRating/StarRating'
-import Counter from './components/Counter/Counter'
 import PostList from './components/PostList/PostList'
 import { IPost } from './types/types'
 import PostForm from './components/PostForm/PostForm'
@@ -46,6 +44,20 @@ function App() {
     setPosts(posts.filter((p) => p.id !== post.id))
   }
 
+  const changePostRating = (rating: number, post: IPost) => {
+    post.rating = rating
+    const newPosts: Array<IPost> = []
+    for (let i = 0; i < posts.length; i++) {
+      if (posts[i].id !== post.id) {
+        newPosts.push(posts[i])
+      } else {
+        post.rating = rating
+        newPosts.push(post)
+      }
+    }
+    setPosts([...newPosts])
+  }
+
   const sortPosts = (sort: string) => {
     setSelectedSort(sort)
   }
@@ -57,7 +69,11 @@ function App() {
       <PostSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} />
       {sortedAndSearchedPosts.length !== 0 ? (
-        <PostList posts={sortedAndSearchedPosts} remove={removePost} />
+        <PostList
+          posts={sortedAndSearchedPosts}
+          remove={removePost}
+          changePostRating={changePostRating}
+        />
       ) : (
         <div className='warning-text'>no posts here</div>
       )}

@@ -3,9 +3,9 @@ import './Reset.scss'
 import './App.scss'
 import PostList from './components/PostList/PostList'
 import { IPost } from './types/types'
-import PostForm from './components/PostForm/PostForm'
 import PostFilter from './components/PostFilter/PostFilter'
 import PostSearch from './components/PostSearch/PostSearch'
+import NoteMaker from './components/NoteMaker/NoteMaker'
 
 function App() {
   const [posts, setPosts] = useState([
@@ -64,8 +64,8 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>To-do</h1>
-      <PostForm addNewPost={addNewPost} />
+      <h1>Todos</h1>
+      <NoteMaker addNewPost={addNewPost}>+ make note</NoteMaker>
       <PostSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} />
       {sortedAndSearchedPosts.length !== 0 ? (

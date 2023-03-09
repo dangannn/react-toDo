@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import MyInput from '../../UI/MyInput/MyInput'
 import MyButton from '../../UI/MyButton/MyButton'
+import MyTextarea from '../../UI/MyTextarea/MyTextarea'
+import styles from './PostForm.module.scss'
 
 const PostForm = ({ addNewPost }: any) => {
   const [post, setPost] = useState({ id: '', title: '', value: '', rating: 0 })
@@ -16,30 +18,32 @@ const PostForm = ({ addNewPost }: any) => {
   }
 
   return (
-    <form>
-      <MyInput
-        value={post.title}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPost({ ...post, title: e.target.value })
-        }
-        type='text'
-        placeholder='Enter a title'
-      />
-      <MyInput
+    <form className={styles.form}>
+      <div className={styles.form__wrapper}>
+        <MyInput
+          value={post.title}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPost({ ...post, title: e.target.value })
+          }
+          type='text'
+          placeholder='Enter a title'
+        />
+        <MyInput
+          rating={post.rating}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPost({ ...post, rating: Number(e.target.value) })
+          }
+          type='text'
+          placeholder='Enter a rating'
+        />
+      </div>
+      <MyTextarea
         value={post.value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setPost({ ...post, value: e.target.value })
         }
         type='text'
         placeholder='Enter a value'
-      />
-      <MyInput
-        rating={post.rating}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPost({ ...post, rating: Number(e.target.value) })
-        }
-        type='text'
-        placeholder='Enter a rating'
       />
       <MyButton onClick={createNewPost}>Post</MyButton>
     </form>

@@ -3,7 +3,6 @@ import styles from './Post.module.scss'
 import { IPost } from '../../types/types'
 import MyButton from '../../UI/MyButton/MyButton'
 import Modal from '../../UI/Modal/Modal'
-import StarRating from '../StarRating/StarRating'
 import PostRating from '../PostRating/PostRating'
 
 interface PostProps {
@@ -30,7 +29,7 @@ const Post = (props: PostProps) => {
           starRating={props.post.rating}
           changePostRating={props.changePostRating}
         ></PostRating>
-        <p className={styles.post__content}>{props.post.value}</p>
+        <div className={styles.post__content}>{props.post.value}</div>
         <div className={styles.post__btns}>
           <MyButton
             onClick={() => {

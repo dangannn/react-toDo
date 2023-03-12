@@ -6,6 +6,7 @@ import { IPost } from './types/types'
 import PostFilter from './components/PostFilter/PostFilter'
 import PostSearch from './components/PostSearch/PostSearch'
 import NoteMaker from './components/NoteMaker/NoteMaker'
+import FilterGroup from './components/FilterGroup/FilterGroup'
 
 function App() {
   const [posts, setPosts] = useState([
@@ -66,8 +67,12 @@ function App() {
     <div className='App'>
       <h1>Todos</h1>
       <NoteMaker addNewPost={addNewPost}>+ make note</NoteMaker>
-      <PostSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} />
+      <FilterGroup
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        selectedSort={selectedSort}
+        sortPosts={sortPosts}
+      ></FilterGroup>
       {sortedAndSearchedPosts.length !== 0 ? (
         <PostList
           posts={sortedAndSearchedPosts}

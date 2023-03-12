@@ -36,7 +36,7 @@ const Post = (props: PostProps) => {
               activeModal(true)
             }}
           >
-            edit
+            open
           </MyButton>
           <MyButton onClick={() => props.remove(props.post)}>reset</MyButton>
         </div>

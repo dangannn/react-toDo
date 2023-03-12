@@ -3,8 +3,12 @@ import MyInput from '../../UI/MyInput/MyInput'
 import MyButton from '../../UI/MyButton/MyButton'
 import MyTextarea from '../../UI/MyTextarea/MyTextarea'
 import styles from './PostForm.module.scss'
+import { IPost } from '../../types/types'
 
-const PostForm = ({ addNewPost }: any) => {
+interface IPostForm {
+  addNewPost: (arg0: IPost) => void
+}
+const PostForm = ({ addNewPost }: IPostForm) => {
   const [post, setPost] = useState({ id: '', title: '', value: '', rating: 0 })
 
   const createNewPost = (e: React.ChangeEvent<HTMLInputElement>) => {

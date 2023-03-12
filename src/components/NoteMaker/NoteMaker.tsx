@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Modal from '../../UI/Modal/Modal'
 import PostForm from '../PostForm/PostForm'
 import { IPost } from '../../types/types'
+import styles from './NoteMaker.module.scss'
+import MyButton from '../../UI/MyButton/MyButton'
 
 interface INoteMaker {
   children: string
@@ -15,14 +17,13 @@ const NoteMaker = ({ children, addNewPost }: INoteMaker) => {
 
   return (
     <div>
-      <span
-        className='note'
+      <MyButton
         onClick={() => {
           activeModal(true)
         }}
       >
         {children}
-      </span>
+      </MyButton>
       <Modal active={active} activeModal={activeModal}>
         <PostForm addNewPost={addNewPost} />
       </Modal>
